@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Body Generator POC</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <h1>Precise Body Generator – POC</h1>
+
+  <div class="controls">
+    <label>
+      Gender:
+      <select id="gender">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+    </label>
+
+    <label>
+        Age :
+        <span id="ageValue">30</span>
+        <input type="number" id="age" value="30" min="0" max="70" />
+    </label>
+    <label>
+        Height :
+        <span id="heightValue">0.60</span>
+        <input type="range" id="height" min="0" max="1" step="0.01" value="0.6" />
+    </label>
+    <label>
+        Chest :
+        <span id="chestValue">0.50</span>
+        <input type="range" id="chest" min="0" max="1" step="0.01" value="0.5" />
+    </label>
+    <label>
+        Waist :
+        <span id="waistValue">0.40</span>
+        <input type="range" id="waist" min="0" max="1" step="0.01" value="0.4" />
+    </label>
+    <label>
+        Hips :
+        <span id="hipsValue">0.60</span>
+        <input type="range" id="hips" min="0" max="1" step="0.01" value="0.6" />
+    </label>
+    <label>
+        Body Fat :
+        <span id="bodyFatValue">0.45</span>
+        <input type="range" id="body_fat" min="0" max="1" step="0.01" value="0.45" />
+    </label>
+
+    <button id="generate">Generate</button>
+  </div>
+
+  <div class="preview">
+    <h3>Preview</h3>
+    <img id="previewImage" />
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
