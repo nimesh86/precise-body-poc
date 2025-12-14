@@ -1,0 +1,63 @@
+precise-body-poc
+│
+├── assets
+│   ├── body_models
+│   │   └── smpl
+│   │       ├── SMPL_FEMALE.pkl        # Real SMPL model (licensed, local only)
+│   │       ├── SMPL_MALE.pkl
+│   │       └── SMPL_NEUTRAL.pkl
+│   │
+│   ├── poses
+│   │   ├── neutral.npy               # Canonical neutral pose (72-dim SMPL pose)
+│   │   ├── a_pose.npy                # Fashion-friendly A-pose
+│   │   └── t_pose.npy                # Engineering / rigging T-pose
+│   │
+│   └── render                        # Reserved for future renderer assets
+│
+├── backend
+│   ├── api
+│   │   └── app.py                    # FastAPI entrypoint
+│   │
+│   ├── core
+│   │   ├── body_engine
+│   │   │   ├── base_engine.py        # Engine contract (engine-agnostic)
+│   │   │   ├── base_smpl_engine.py   # Shared SMPL/SMPL-X utilities
+│   │   │   ├── simple_engine.py      # POC v1 reference engine
+│   │   │   ├── smpl_engine.py        # Real SMPL body engine
+│   │   │   └── smplx_engine.py       # SMPL-X placeholder (future)
+│   │   │
+│   │   ├── mapping
+│   │   │   ├── canonical_to_engine.py
+│   │   │   ├── canonical_to_pose.py  # Canonical → pose name mapping
+│   │   │   └── canonical_to_smpl.py  # Canonical → SMPL betas mapping
+│   │   │
+│   │   ├── models
+│   │   │   ├── canonical.py          # Canonical schema
+│   │   │   ├── engine.py             # Engine I/O models
+│   │   │   └── artifacts.py          # MeshArtifact / RenderArtifact
+│   │   │
+│   │   ├── rendering
+│   │   │   └── renderer.py           # Renderer v1 (placeholder)
+│   │   │
+│   │   └── validation
+│   │       └── validator.py          # Canonical input validation
+│   │
+│   └── main.py                       # Backend bootstrap
+│
+├── scripts
+│   ├── generate_smpl_poses.py        # One-time pose generation script
+│   ├── render_smpl_validation.py     # Renderer compatibility validation
+│   └── generate_sample.py
+│
+├── tests
+│   ├── body_engine                   # Engine-level tests
+│   ├── mapping                       # Canonical mapping tests
+│   └── validation
+│
+├── outputs
+│   ├── meshes                        # Generated SMPL meshes
+│   ├── images                        # Placeholder renders
+│   └── validation                   # Renderer validation outputs
+│
+└── webui
+    └── public / src                  # UI (unchanged in POC v2)

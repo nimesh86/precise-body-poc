@@ -2,9 +2,10 @@
 
 from typing import Dict, Any
 from backend.core.body_engine.base_engine import BaseBodyEngine
+from backend.core.body_engine.base_smpl_engine import BaseSMPLFamilyEngine
 
 
-class SMPLXEngine(BaseBodyEngine):
+class SMPLXEngine(BaseBodyEngine, BaseSMPLFamilyEngine):
     """
     POC v1 body generation engine.
     This preserves the original behavior exactly.
