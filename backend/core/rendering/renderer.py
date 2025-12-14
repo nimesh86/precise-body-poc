@@ -2,6 +2,7 @@ import os
 import hashlib
 from PIL import Image, ImageDraw, ImageFont
 
+from backend.core.rendering.base_renderer import BaseRenderer
 from backend.core.models.artifacts import MeshArtifact, RenderArtifact
 
 
@@ -58,3 +59,11 @@ def _render_placeholder(path: str, mesh_path: str) -> None:
         y += 32
 
     img.save(path)
+
+class PlaceholderRenderer(BaseRenderer):
+    """
+    Adapter around existing render_preview().
+    """
+
+    def render(self, mesh: MeshArtifact) -> RenderArtifact:
+        return render_preview(mesh)
