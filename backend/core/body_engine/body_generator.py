@@ -2,9 +2,26 @@ import os
 import uuid
 from backend.core.models.engine import EngineBodyParams
 from backend.core.models.artifacts import MeshArtifact
+from backend.core.body_engine.simple_engine import SimpleEngine
+from backend.core.body_engine.smpl_engine import SMPLEngine
+from backend.core.body_engine.smplx_engine import SMPLXEngine
+
 
 
 OUTPUT_MESH_DIR = "outputs/meshes"
+
+ENGINE_MAP = {
+    "simple": SimpleEngine(),
+    "smpl": SMPLEngine(),
+    "smplx": SMPLXEngine(),
+}
+
+def generate_body(engine_type: str, engine_params):
+    if engine_type not in ENGINE_MAP:
+        raise ValueError(f"Unsupported engine: {engine_type}")
+
+    engine = ENGINE_MAP[engine_type]
+    return engine.generate_mesh(engine_params)
 
 
 def generate_body_mesh(params: EngineBodyParams) -> MeshArtifact:
